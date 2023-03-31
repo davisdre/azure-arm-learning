@@ -9,7 +9,7 @@ az account show
 # Create resource group
 az group create \
 --name rg-myARMdemo \
---location eastus \
+--location eastus 
 
 # Deploy Arm which will create a storage account in the newly created resource group you in a previous step.
 az deployment group create \
