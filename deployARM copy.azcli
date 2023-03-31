@@ -1,0 +1,21 @@
+# Connect to Azure Commerical and use your elevated account credentials during 'az login'
+az cloud set --name AzureCloud
+
+az login
+
+# Verify your in the correct subscription you want to deploy this into via the 'name' and 'id' values. If not switch to the appropriate Azure subscription
+az account show
+
+# Create resource group
+az group create \
+--name rg-myARMdemo \
+--location eastus \
+
+# Deploy Arm which will create a storage account in the newly created resource group you in a previous step.
+az deployment group create \
+--resource-group rg-myARMdemo \
+--template-file azuredeploy.json \
+--parameters azuredeploy.parameters.json
+
+# Clean up my resources
+az group delete --name rg-myARMdemo
